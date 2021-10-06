@@ -1,0 +1,6 @@
+﻿  ConsoleApplication3.cpp
+  Date.cpp
+  test.cpp
+  Создание кода...
+C:\Users\nikit\Desktop\ConsoleApplication3\ConsoleApplication3\Date.cpp(166): warning C4172: возвращение адреса локальной или временной переменной : string
+  ConsoleApplication3.vcxproj -> C:\Users\nikit\Desktop\ConsoleApplication3\Debug\ConsoleApplication3.exe
