@@ -2,38 +2,38 @@
 #include <iostream>
 #include <stdio.h>
 
-Date::Date() {//стандарный конструктор
+Date::Date() {
 	day = 0;
 	month = 0;
 	year = 0;
 	hour = 0;
 	minute = 0;
 }
-Date::Date(int day, int month, int year, int hour, int minute) {//конструктор с параметрами 
+Date::Date(int day, int month, int year, int hour, int minute) {
 	if ((day < 31) && (day > 0)) {
 		this->day = day;
 	}
 	else {
-		day = 1;
+		this->day = 1;
 	}
 	if ((month < 13) && (month > 0)) {
 		this->month = month;
 	}
 	else {
-		month = 1;
+		this->month = 1;
 	}
 	this->year = year;
 	if ((minute < 61) && (minute > 0)) {
 		this->minute = minute;
 	}
 	else {
-		minute = 0;
+		this->minute = 0;
 	}
 	if ((hour < 25) && (hour > 0)) {
 		this->hour = hour;
 	}
 	else {
-		hour = 0;
+		this->hour = 0;
 	}
 }
 Date::Date(const Date& date) {//конструктор копирования
@@ -45,72 +45,94 @@ Date::Date(const Date& date) {//конструктор копирования
 }
 
 
-Date::~Date()//деструктор
+Date::~Date()
 {
 	cout << "Memory is cleared" << std::endl;
 }
 
 
-void Date::additionDay()//функция добавления единицы к значению дней
+void Date::additionDay()
 {
-	day++;
-	this->day = day;
+	if (day+1 >= 30) throw "ERROR";
+	else{day++; }
 }
-void Date::additionMonth()//функция добавления единицы к  значению месяцев
+void Date::additionMonth()
 {
+	if (month+1 > 12) throw  "ERROR";
 	month++;
-	this->month = month;
 }
-void Date::additionYear()//функция добавления единицы к значению годов
+void Date::additionYear()
 {
 	year++;
-	this->year = year;
 }
-void Date::additionHour()//функция добавления единицы к зачению часов
+void Date::additionHour()
 {
+	if (hour+1 > 24) throw "ERROR";
 	hour++;
-	this->hour = hour;
 }
-void Date::additionMinute()//функция добавления единицы к значени минут
+void Date::additionMinute()
 {
+	if (minute+1 > 60) throw "ERROR";
 	minute++;
-	this->minute = minute;
 
 }
 
 
-void Date::subtractionDay()//функция вычитания единицы из значения дней
+void Date::subtractionDay()
 {
-	day--;
+	if (day - 1 < 1) {
+		setMonth(month - 1);
+		day = 29;
+	}
+	else {
+		day--;
+	}
 }
-void Date::subtractionMonth()//функция вычитания единицы из значения дней
+void Date::subtractionMonth()
 {
-	month--;
+	if (month - 1 < 1) {
+		setYear(year - 1);
+		month = 59;
+	}
+	else { month--; }
 }
-void Date::subtractionYear()//функция вычитания единицы из значения годов
+void Date::subtractionYear()
 {
 	year--;
 }
-void Date::subtractionHour()//функция вычитания единицы из значения часов
+void Date::subtractionHour()
 {
-	hour--;
+	if (hour - 1 < 0) {
+		setDay(day - 1);
+		hour = 23;
+	}
+	else{hour--;
 }
-void Date::subtractionMinute()//функция вычитания единицы из значения минут
+}
+void Date::subtractionMinute()
 {
-	minute--;
+	//if (minute <= 0) throw "ERROR"
+	if (minute - 1 < 0) {
+		setHour(hour-1);
+		minute = 59;
+	}
+	else {
+		minute--;
+	}
+
 }
 
 
 void Date::setDay(int day)
 {
 
-	if (day > 30 || day < 0) { cout << "ERROR"; }
-	else { this->day = day; }
+	if (day > 30 || day < 1) throw "ERROR";
+	this->day = day;
 }
 void Date::setMonth(int month)
 {
-	if (month > 13 || month < 0) { cout << "ERROR"; }
-	else { this->month = month; }
+	if (month > 13 || month < 1) throw  "ERROR"; 
+	this->month = month;
 }
 void Date::setYear(int year)
 {
@@ -118,13 +140,13 @@ void Date::setYear(int year)
 }
 void Date::setHour(int hour)
 {
-	if (hour > 24 || hour < 0) { cout << "ERROR"; }
-	else { this->hour = hour; }
+	if (hour > 24 || hour < 0) throw "ERROR";
+	this->hour = hour;
 }
 void Date::setMinute(int minute)
 {
-	if (minute > 0 || minute < 0) { cout << "ERROR"; }
-	else { this->minute = minute; }
+	if (minute > 60 || minute < 0) throw "ERROR"; 
+	this->minute = minute; 
 }
 
 
@@ -149,9 +171,6 @@ int Date::getMinute()
 	return minute;
 }
 
-void Date::Cout() {//функция вывода на экран
-	cout << ToString();
-}
 
 char* Date::ToString()
 {

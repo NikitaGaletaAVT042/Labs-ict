@@ -11,4 +11,7 @@ int main()
 	t.Test1();
 	t.Test2();
 	t.Test3();
+	t.Test4();
+	char ch;
+	std::cin >> ch;
 }
