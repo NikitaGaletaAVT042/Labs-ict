@@ -174,13 +174,7 @@ int Date::getMinute()
 
 char* Date::ToString()
 {
-	int date1[] = { day,month,year,minute,hour };
-	char string[1000] = "";
-	char helped[12];
-	for (int i = 0; i < 5; i++) {
-		sprintf_s(helped, sizeof(helped), "%d", date1[i]);
-		strcat_s(string, sizeof(string), helped);
-		strcat_s(string, sizeof(string), " ");
-	}
+	char* string = new char[255];
+	sprintf_s(string, 25, "%d:%d:%d %d:%d",  day, month, year, minute, hour );
 	return string;
 }

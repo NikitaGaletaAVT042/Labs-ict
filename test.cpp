@@ -29,9 +29,9 @@ void Test::Test1()
 	}
 	bool t = equal(date1, a);
 	if (t == 1) {
-	cout << "true" << endl;
+	cout << " true" << endl;
 		}
-	else{ cout << "false" << endl; }
+	else{ cout << " false" << endl; }
 	cout << endl << endl;
 }
 void Test::Test2()
@@ -53,10 +53,10 @@ void Test::Test2()
 	}
 	bool t2 = equal(date2, b);
 	if (t2 == 1) {
-		cout << "true" << endl;
+		cout << " true" << endl;
 	}
 	else {
-		cout << "false" << endl;
+		cout << " false" << endl;
 	}
 	cout << endl << endl;
 }
@@ -64,7 +64,7 @@ void Test::Test3()
 {
 	cout << "Third test\n";
 	Date date3(13, 11, 2002, 8, 9);
-	int c[5] = { 14,12,2003, 10, 9 };
+	int c[5] = { 13,11,2002, 8, 9 };
 	cout << date3.ToString();
 	cout << endl;
 	try {
@@ -80,16 +80,16 @@ void Test::Test3()
 	}
 	bool t3 = equal(date3, c);
 	if (t3 == 1) {
-		cout << "true" << endl;
+		cout << " true" << endl;
 	}
-	else{ cout << "false" << endl; }
+	else{ cout << " false" << endl; }
 	cout << endl << endl;
 }
 void Test::Test4()
 {
 	cout << "Fourth test\n";
 	Date date4(1, 10, 2002, 59, 60);
-	int d[5] = { 4,10,2003, 3, 12 };
+	int d[5] = {29,8,2001, 3, 12 };
 	cout << date4.ToString();
 	cout << endl;
 	try {
@@ -114,9 +114,9 @@ void Test::Test4()
 	}
 	bool t4 = equal(date4, d);
 	if (t4 == 1) {
-		cout << "true" << endl;
+		cout << " true" << endl;
 	}
-	else{ cout << "false" << endl; }
+	else{ cout << " false" << endl; }
 	cout << endl << endl;
 
 }

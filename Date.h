@@ -36,11 +36,6 @@ public:
 	int getHour();
 	int getMinute();
 
-
-	void checkadditionDate();
-	void checksubtractionDate();
-
-	void Cout();
 	char* ToString();
 
 private:
