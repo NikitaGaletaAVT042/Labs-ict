@@ -1,6 +1,5 @@
 #pragma once
 #include <stdio.h>
-#include <string>
 using namespace std;
 
 class Date
@@ -12,17 +11,17 @@ public:
 	Date(const Date& obj);
 	~Date();
 
-	void additionDay();
-	void additionMonth();
-	void additionYear();
-	void additionHour();
-	void additionMinute();
+	void addoneDay();
+	void addoneMonth();
+	void addoneYear();
+	void addoneHour();
+	void addoneMinute();
 
-	void subtractionDay();
-	void subtractionMonth();
-	void subtractionYear();
-	void subtractionHour();
-	void subtractionMinute();
+	void subtractoneDay();
+	void subtractoneMonth();
+	void subtractoneYear();
+	void subtractoneHour();
+	void subtractoneMinute();
 
 	void setDay(int day);
 	void setMonth(int mounth);
@@ -40,4 +39,5 @@ public:
 
 private:
 	int day, month, year, hour, minute;
+	char* k;
 };

@@ -7,4 +7,6 @@ public:
 	void Test2();
 	void Test3();
 	void Test4();
+private:
+	bool t = 0;
 };

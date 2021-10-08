@@ -4,10 +4,22 @@
 
 Date::Date() {
 	day = 0;
+	if (day < 0) {
+		day = day * -1;
+	}
 	month = 0;
+	if (month < 0) {
+		month = month * -1;
+	}
 	year = 0;
 	hour = 0;
+	if (hour < 0) {
+		hour = hour * -1;
+	}
 	minute = 0;
+	if (minute < 0) {
+		minute = minute * -1;
+	}
 }
 Date::Date(int day, int month, int year, int hour, int minute) {
 	if ((day < 31) && (day > 0)) {
@@ -47,77 +59,100 @@ Date::Date(const Date& date) {//конструктор копирования
 
 Date::~Date()
 {
+	delete[] k;
 	cout << "Memory is cleared" << std::endl;
 }
 
 
-void Date::additionDay()
+void Date::addoneDay()
 {
-	if (day+1 >= 30) throw "ERROR";
-	else{day++; }
+	try {
+		if (day + 1 >= 30) { month++; throw day = 1; }
+		else (day++);
+	}
+	catch(int day){
+		this->day = day;
+	}
 }
-void Date::additionMonth()
+void Date::addoneMonth()
 {
-	if (month+1 > 12) throw  "ERROR";
-	month++;
+	try {
+		if (month + 1 >= 12) { year++; throw month = 1; }
+		else (month++);
+	}
+	catch (int month) {
+		this->month = month;
+	}
 }
-void Date::additionYear()
+void Date::addoneYear()
 {
 	year++;
 }
-void Date::additionHour()
+void Date::addoneHour()
 {
-	if (hour+1 > 24) throw "ERROR";
-	hour++;
+	try {
+		if (hour + 1 >= 24) { day++; throw hour = 1; }
+		else (hour++);
+	}
+	catch (int hour) {
+		this->hour = hour;
+	}
 }
-void Date::additionMinute()
+void Date::addoneMinute()
 {
-	if (minute+1 > 60) throw "ERROR";
-	minute++;
+	try {
+		if (minute + 1 >= 60) { hour++; throw minute = 1; }
+		else (minute++);
+	}
+	catch (int minute) {
+		this->minute = minute;
+	}
 
 }
 
 
-void Date::subtractionDay()
+void Date::subtractoneDay()
 {
-	if (day - 1 < 1) {
-		setMonth(month - 1);
-		day = 29;
+	try {
+		if (day - 1 < 1) { month--; throw day = 30; }
+		else (day--);
 	}
-	else {
-		day--;
+	catch (int day) {
+		this->day = day;
 	}
 }
-void Date::subtractionMonth()
+void Date::subtractoneMonth()
 {
-	if (month - 1 < 1) {
-		setYear(year - 1);
-		month = 59;
+	try {
+		if (month - 1 < 1) { year--; throw month = 12; }
+		else (month--);
 	}
-	else { month--; }
+	catch (int month) {
+		this->month = month;
+	}
 }
-void Date::subtractionYear()
+void Date::subtractoneYear()
 {
 	year--;
 }
-void Date::subtractionHour()
+void Date::subtractoneHour()
 {
-	if (hour - 1 < 0) {
-		setDay(day - 1);
-		hour = 23;
+	try {
+		if (hour - 1 < 0) { day--; throw hour = 24; }
+		else (hour--);
 	}
-	else{hour--;
+	catch (int hour) {
+		this->hour = hour;
+	}
 }
-}
-void Date::subtractionMinute()
+void Date::subtractoneMinute()
 {
-	//if (minute <= 0) throw "ERROR"
-	if (minute - 1 < 0) {
-		setHour(hour-1);
-		minute = 59;
+	try {
+		if (minute - 1 < 0) { hour--; throw minute = 60; }
+		else (minute--);
 	}
-	else {
-		minute--;
+	catch (int minute) {
+		this->minute = minute;
 	}
 
 }
@@ -126,12 +161,12 @@ void Date::subtractionMinute()
 void Date::setDay(int day)
 {
 
-	if (day > 30 || day < 1) throw "ERROR";
+	if (day > 30 || day < 1)throw exception("ERROR");
 	this->day = day;
 }
 void Date::setMonth(int month)
 {
-	if (month > 13 || month < 1) throw  "ERROR"; 
+	if (month > 13 || month < 1) throw exception("ERROR");
 	this->month = month;
 }
 void Date::setYear(int year)
@@ -140,12 +175,12 @@ void Date::setYear(int year)
 }
 void Date::setHour(int hour)
 {
-	if (hour > 24 || hour < 0) throw "ERROR";
+	if (hour > 24 || hour < 0) throw exception("ERROR");
 	this->hour = hour;
 }
 void Date::setMinute(int minute)
 {
-	if (minute > 60 || minute < 0) throw "ERROR"; 
+	if (minute > 60 || minute < 0) throw exception ("ERROR"); 
 	this->minute = minute; 
 }
 
@@ -175,6 +210,7 @@ int Date::getMinute()
 char* Date::ToString()
 {
 	char* string = new char[255];
-	sprintf_s(string, 25, "%d:%d:%d %d:%d",  day, month, year, minute, hour );
+	sprintf_s(string, 25, "%d:%d:%d %d:%d",  year, month, day, hour, minute );
+	k = string;
 	return string;
 }

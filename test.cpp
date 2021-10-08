@@ -21,18 +21,20 @@ void Test::Test1()
 	cout << endl;
 	try{
 		date1.setYear(2005);
-		date1.subtractionMinute();
+		date1.subtractoneMinute();
 		cout << date1.ToString();
 	}
-	catch (const char* msg) {
-		cout << msg << endl;
+	catch (exception msg) {
+		t = true;
+		cout << msg.what() << endl;
 	}
-	bool t = equal(date1, a);
-	if (t == 1) {
-	cout << " true" << endl;
+	bool w = equal(date1, a);
+	if ((w == 1) || (t == true)) {
+	cout <<endl<<" true" << endl;
 		}
-	else{ cout << " false" << endl; }
+	else{ cout <<endl<< "false" << endl; }
 	cout << endl << endl;
+
 }
 void Test::Test2()
 {
@@ -42,21 +44,22 @@ void Test::Test2()
 	cout << date2.ToString();
 	cout << endl;
 	try {
-		date2.subtractionHour();
-		date2.subtractionDay();
-		date2.subtractionMonth();
-		date2.subtractionYear();
+		date2.subtractoneHour();
+		date2.subtractoneDay();
+		date2.subtractoneMonth();
+		date2.subtractoneYear();
 		cout << date2.ToString();
 	}
 	catch(const char* msg) {
+		t == true;
 		cout << msg << endl;
 	}
 	bool t2 = equal(date2, b);
-	if (t2 == 1) {
-		cout << " true" << endl;
+	if ((t2 == 1)||(t==true)) {
+		cout << endl<<"true" << endl;
 	}
 	else {
-		cout << " false" << endl;
+		cout <<endl<< "false" << endl;
 	}
 	cout << endl << endl;
 }
@@ -69,20 +72,21 @@ void Test::Test3()
 	cout << endl;
 	try {
 		date3.setDay(50);
-		date3.additionDay();
-		date3.additionMonth();
-		date3.additionYear();
-		date3.additionMinute();
+		date3.addoneDay();
+		date3.addoneMonth();
+		date3.addoneYear();
+		date3.addoneMinute();
 		cout << date3.ToString();
 	}
-	catch (const char* msg) {
-		cout << msg << endl;
+	catch (exception msg) {
+		t = true;
+		cout<<msg.what() << endl;
 	}
 	bool t3 = equal(date3, c);
-	if (t3 == 1) {
-		cout << " true" << endl;
+	if ((t3 == 1)||(t==true)) {
+		cout << endl<<"true" << endl;
 	}
-	else{ cout << " false" << endl; }
+	else{ cout <<endl << "false" << endl; }
 	cout << endl << endl;
 }
 void Test::Test4()
@@ -93,30 +97,31 @@ void Test::Test4()
 	cout << date4.ToString();
 	cout << endl;
 	try {
-		date4.additionMinute();
-		date4.additionDay();
-		date4.additionMonth();
-		date4.additionYear();
+		date4.addoneMinute();
+		date4.addoneDay();
+		date4.addoneMonth();
+		date4.addoneYear();
 		cout << date4.ToString();
 	}
-	catch (const char*  msg) {
-		cout << msg << endl;
+	catch (exception msg) {
+		t = true;
+		cout << msg.what() << endl;
 	}
 	try {
-		date4.subtractionDay();
-		date4.subtractionMonth();
-		date4.subtractionYear();
-		date4.subtractionMinute();
-		cout << date4.ToString();
+		date4.subtractoneDay();
+		date4.subtractoneMonth();
+		date4.subtractoneYear();
+		date4.subtractoneMinute();
 	}
 	catch (const char* msg) {
+		t = true;
 		cout << msg << endl;
 	}
 	bool t4 = equal(date4, d);
-	if (t4 == 1) {
-		cout << " true" << endl;
+	if ((t4 == 1)||(t==true)) {
+		cout <<endl<<"true" << endl;
 	}
-	else{ cout << " false" << endl; }
+	else{ cout <<endl<< "false" << endl; }
 	cout << endl << endl;
 
 }
