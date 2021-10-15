@@ -35,9 +35,10 @@ public:
 	int getHour();
 	int getMinute();
 
-	char* ToString();
+	virtual char* ToString();
 
 private:
 	int day, month, year, hour, minute;
+protected:
 	char* k;
 };

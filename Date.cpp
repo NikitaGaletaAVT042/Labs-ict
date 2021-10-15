@@ -210,7 +210,7 @@ int Date::getMinute()
 char* Date::ToString()
 {
 	char* string = new char[255];
-	sprintf_s(string, 25, "%d:%d:%d %d:%d",  year, month, day, hour, minute );
+	sprintf_s(string, 25, "%d:%d:%d %d:%d", year, month, day, hour, minute );
 	k = string;
 	return string;
 }

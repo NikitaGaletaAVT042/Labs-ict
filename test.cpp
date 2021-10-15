@@ -1,8 +1,4 @@
 #include "Test.h"
-#include "Date.h"
-#include <iostream>
-#include <cassert>
-using namespace std;
 bool equal(Date& date, int a[5]) {
 	int i = 0;
 	bool k = false;
@@ -89,11 +85,12 @@ void Test::Test3()
 	else{ cout <<endl << "false" << endl; }
 	cout << endl << endl;
 }
+
 void Test::Test4()
 {
 	cout << "Fourth test\n";
 	Date date4(1, 10, 2002, 59, 60);
-	int d[5] = {29,8,2001, 3, 12 };
+	int d[5] = { 29,8,2001, 3, 12 };
 	cout << date4.ToString();
 	cout << endl;
 	try {
@@ -118,10 +115,27 @@ void Test::Test4()
 		cout << msg << endl;
 	}
 	bool t4 = equal(date4, d);
-	if ((t4 == 1)||(t==true)) {
-		cout <<endl<<"true" << endl;
+	if ((t4 == 1) || (t == true)) {
+		cout << endl << "true" << endl;
 	}
-	else{ cout <<endl<< "false" << endl; }
-	cout << endl << endl;
+	else {
+		cout << endl << "false" << endl;
+		cout << endl << endl;
+	}
+}
 
+void Test::Test5()
+{
+	cout <<endl<< "Fivth test\n";
+	EventDate date5(1, 10, 2002, 59, 60);
+	cout<<date5.ToString()<<endl;
+}
+
+void Test::Test6()
+{
+	cout << endl << "Sixth test\n";
+	StringDate date6(1, 10, 2002, 23, 60);
+	StringDate date7(1, 10, 2002, 9, 60);
+	cout << date6.ToString() << endl;
+	cout << date7.ToString() << endl;
 }

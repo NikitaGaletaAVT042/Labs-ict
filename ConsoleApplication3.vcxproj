@@ -141,10 +141,14 @@
   <ItemGroup>
     <ClCompile Include="ConsoleApplication3.cpp" />
     <ClCompile Include="Date.cpp" />
+    <ClCompile Include="EventDate.cpp" />
+    <ClCompile Include="StringDate.cpp" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Date.h" />
+    <ClInclude Include="EventDate.h" />
+    <ClInclude Include="StringDate.h" />
     <ClInclude Include="test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
