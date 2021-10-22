@@ -3,6 +3,7 @@
 #include <stdio.h>
 
 Date::Date() {
+	a++;
 	day = 0;
 	if (day < 0) {
 		day = day * -1;
@@ -47,6 +48,7 @@ Date::Date(int day, int month, int year, int hour, int minute) {
 	else {
 		this->hour = 0;
 	}
+	a++;
 }
 Date::Date(const Date& date) {//конструктор копирования
 	this->day = date.day;
@@ -54,12 +56,13 @@ Date::Date(const Date& date) {//конструктор копирования
 	this->year = date.year;
 	this->minute = date.minute;
 	this->hour = date.hour;
+	a++;
 }
 
 
 Date::~Date()
 {
-	delete[] k;
+	delete strin;
 	cout << "Memory is cleared" << std::endl;
 }
 
@@ -209,8 +212,8 @@ int Date::getMinute()
 
 char* Date::ToString()
 {
-	char* string = new char[255];
-	sprintf_s(string, 25, "%d:%d:%d %d:%d", year, month, day, hour, minute );
-	k = string;
-	return string;
+	sprintf_s(strin, 25, "%d:%d:%d %d:%d", year, month, day, hour, minute );
+	return strin;
 }
+
+int Date::a = 0;

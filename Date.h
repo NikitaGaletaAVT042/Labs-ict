@@ -1,5 +1,7 @@
 #pragma once
 #include <stdio.h>
+#include <cmath>
+#include <fstream> 
 using namespace std;
 
 class Date
@@ -36,9 +38,8 @@ public:
 	int getMinute();
 
 	virtual char* ToString();
-
 private:
 	int day, month, year, hour, minute;
 protected:
-	char* k;
+	char* strin = new char[255];
 };

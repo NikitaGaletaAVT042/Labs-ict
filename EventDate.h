@@ -7,15 +7,16 @@ class EventDate :
     public Date
 {
 public:
-	EventDate(int day, int month, int year, int hour, int minute);
+	EventDate(const char* Eventnumber, int day, int month, int year, int hour, int minute);
 	EventDate();
 	EventDate(const EventDate& obj);
 	
-	int getEventnumber();
-	void setEventnumber(int Eventnumber);
+	const char* getEventname();
+	void setEventname(const char* Eventname);
+
 
 	char* ToString() override;
 private:
-	int Eventnumber=0;
+	const char* Eventname;
 };
 

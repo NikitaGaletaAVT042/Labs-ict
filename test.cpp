@@ -127,15 +127,42 @@ void Test::Test4()
 void Test::Test5()
 {
 	cout <<endl<< "Fivth test\n";
-	EventDate date5(1, 10, 2002, 59, 60);
-	cout<<date5.ToString()<<endl;
+	const char* c = "Ñoncert";
+	char ch[255] = "Theatre  2002:10:1 0:60";
+	const char* e = "Theatre";
+	EventDate date5(c, 1, 10, 2002, 59, 60);
+	date5.setEventname(e);
+	char* m = date5.ToString();
+	cout << date5.ToString()<<endl;
+	if (strcmp(m,ch)!=0){
+		cout << "False" << endl;
+	}
+	else {
+		cout << "True" << endl;
+	}
 }
 
 void Test::Test6()
 {
 	cout << endl << "Sixth test\n";
+	char ch[255] = "2002:10:1 11:60 pm";
+	char ct[255] = "2002:10:1 9:60 am";
 	StringDate date6(1, 10, 2002, 23, 60);
 	StringDate date7(1, 10, 2002, 9, 60);
+	char* m1= date6.ToString();
+	char* m2= date7.ToString();
 	cout << date6.ToString() << endl;
+	if (strcmp(m1, ch) != 0) {
+		cout << "False" << endl;
+	}
+	else {
+		cout << "True" << endl;
+	}
 	cout << date7.ToString() << endl;
+	if (strcmp(m2, ct) != 0) {
+		cout << "False" << endl;
+	}
+	else {
+		cout << "True" << endl;
+	}
 }

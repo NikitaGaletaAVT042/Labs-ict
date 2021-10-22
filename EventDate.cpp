@@ -2,35 +2,41 @@
 using std::cout;
 using std::endl;
 
-EventDate::EventDate(int day, int month, int year, int hour, int minute) : Date(day, month, year, hour, minute)
+EventDate::EventDate(const char* Eventname, int day, int month, int year, int hour, int minute) : Date(day, month, year, hour, minute)
 {
-	Eventnumber++;
+	this->Eventname = Eventname;
 }
 
 EventDate::EventDate() : Date()
 {
-	Eventnumber++;
+	this->Eventname = Eventname;
 }
 
 EventDate::EventDate(const EventDate& obj):Date(obj)
 {
-	Eventnumber++;
+	this->Eventname = Eventname;
 }
 
-int EventDate::getEventnumber()
+const char* EventDate::getEventname()
 {
-	return Eventnumber;
+	int length = strlen(Eventname) + 1;
+	char* temp = new char[length];
+	strcpy_s(temp,length,Eventname);
+	return temp;
 }
 
-void EventDate::setEventnumber(int Eventnumber)
+void EventDate::setEventname(const char* Eventname)
 {
-	this->Eventnumber = Eventnumber;
+	this->Eventname = Eventname;
 }
+
+
 
 char* EventDate::ToString()
 {
-	char* string = new char[255];
-	sprintf_s(string, 25, "Event ¹%d %d:%d:%d %d:%d",Eventnumber, getYear(), getMonth(), getDay(), getHour(), getMinute());
-	k = string;
-	return string;
+	sprintf_s(strin, 25, "%s  %d:%d:%d %d:%d", getEventname(), getYear(), getMonth(), getDay(), getHour(), getMinute());
+	int m_length = strlen(strin) + 1;
+	char* m_strin = new char[m_length];
+	strcpy_s(m_strin, m_length, strin);
+	return m_strin;
 }
