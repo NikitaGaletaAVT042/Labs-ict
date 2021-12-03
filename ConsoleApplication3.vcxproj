@@ -88,6 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -142,14 +143,19 @@
     <ClCompile Include="ConsoleApplication3.cpp" />
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="EventDate.cpp" />
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Stack.cpp" />
     <ClCompile Include="StringDate.cpp" />
     <ClCompile Include="test.cpp" />
+    <ClCompile Include="TStack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Date.h" />
     <ClInclude Include="EventDate.h" />
+    <ClInclude Include="Stack.h" />
     <ClInclude Include="StringDate.h" />
     <ClInclude Include="test.h" />
+    <ClInclude Include="TStack.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

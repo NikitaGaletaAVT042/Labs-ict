@@ -1,22 +1,16 @@
 #pragma once
 #include "Date.h"
-#include "iostream"
-
-
-class EventDate :
-    public Date
+class EventDate : public Date
 {
 public:
-	EventDate(const char* Eventnumber, int day, int month, int year, int hour, int minute);
 	EventDate();
-	EventDate(const EventDate& obj);
-	
-	const char* getEventname();
-	void setEventname(const char* Eventname);
-
-
-	char* ToString() override;
+	EventDate(int hour, int minute,int day, int month, int year, char* name);
+	EventDate(const EventDate& ob);
+	~EventDate();
+	char* ToString();
+	char* GetEvent();
+	void SetEvent(char* NameEvent);
 private:
-	const char* Eventname;
+	char* Eventstring;
+	char* Event;
 };
-

@@ -21,6 +21,7 @@ Date::Date() {
 	if (minute < 0) {
 		minute = minute * -1;
 	}
+	strin = new char[256];
 }
 Date::Date(int day, int month, int year, int hour, int minute) {
 	if ((day < 31) && (day > 0)) {
@@ -62,8 +63,7 @@ Date::Date(const Date& date) {//конструктор копирования
 
 Date::~Date()
 {
-	delete strin;
-	cout << "Memory is cleared" << std::endl;
+	delete [] strin;
 }
 
 
@@ -216,4 +216,104 @@ char* Date::ToString()
 	return strin;
 }
 
+void Date::TextWrite(const char* filename)
+{
+
+	ofstream out(filename, ios::app);
+
+	if (!out) {
+		cerr << "File not open" << endl;
+		exit(1);
+	}
+
+	out << *this;
+	out.close();
+ 
+}
+
+Date Date::TextRead(int index, const char* filename)
+{
+
+	ifstream in(filename, ios::in);
+
+	if (!in) {
+		cerr << "File not open" << endl;
+		exit(1);
+	}
+
+	Date nDate;
+
+	for (int i = 1; i <= index; i++) {
+		in >> nDate;
+	}
+
+	in.close();
+	return nDate;
+}
+
+void Date::BinWrite(const char* filename)
+{
+
+	ofstream out(filename, ios::app | ios::binary);
+
+	if (!out) {
+		cerr << "File not open" << endl;
+		exit(1);
+	}
+
+	out << *this;
+	out.close();
+
+}
+
+Date Date::BinRead(int index, const char* filename)
+{
+	ifstream in(filename, ios::in | ios::binary);
+
+	if (!in) {
+		cerr << "File not open" << endl;
+		exit(1);
+	}
+
+	Date nDate;
+
+	for (int i = 1; i <= index; i++) {
+		in >> nDate;
+	}
+
+	in.close();
+	return nDate;
+}
+
 int Date::a = 0;
+
+Date operator + (const Date& obj1, const Date& obj2) {
+	Date obj;
+	obj.day = obj1.day + obj2.day;
+	obj.month = obj1.month + obj2.month;
+	obj.year = obj1.year + obj2.year;
+	obj.hour = obj1.hour + obj2.hour;
+	obj.minute = obj1.minute + obj2.minute;
+	return CheckingPlus(obj);
+}
+
+Date operator - (const Date& obj1, const Date& obj2) {
+	Date obj;
+	obj.day = obj1.day - obj2.day;
+	obj.month = obj1.month - obj2.month;
+	obj.year = obj1.year - obj2.year;
+	obj.hour = obj1.hour - obj2.hour;
+	obj.minute = obj1.minute - obj2.minute;
+	return CheckingMinus(obj);
+}
+
+ostream& operator <<(ostream& os, const Date& obj) {
+	os << obj.year << " " << obj.month << " " << obj.day << " " << obj.hour << " " << obj.minute << "\n";
+	return os;
+}
+
+istream& operator >>(istream& is, Date& obj)
+{
+	is >> obj.year >> obj.month >> obj.day >> obj.hour >> obj.minute;
+	return is;
+}

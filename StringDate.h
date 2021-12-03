@@ -7,6 +7,9 @@ public:
 	StringDate(int day, int month, int year, int hour, int minute);
 	StringDate();
 	StringDate(const StringDate& obj);
-	char* ToString() override;
+	~StringDate();
+	virtual char* ToString();
+private:
+	char* stringtime;
 };
 
