@@ -288,29 +288,28 @@
 //	cout << date9;
 //}
 //
-TEST_CASE("Test 13")
-{
-	TStack<int> s1;
-	s1.push(2);
-	s1.push(-9);
-	s1.push(0);
-	s1.push(123);
-	cout << s1.to_string();
-
-	s1.pop();
-	REQUIRE(strcmp(s1.to_string(), "2  -9  0"));
-
-}
-
-
-//TEST_CASE("PLUS")
+//TEST_CASE("Test 13")
 //{
-//	Date date4(6, 6, 6, 6, 6);
-//	Date date1(1, 2, 3, 4, 5);
-//	Date date2(5, 4, 3, 2, 1);
-//	Date date3 = date1 + date2;
-//	cout << date1.ToString() << endl;
-//	cout << date2.ToString() << endl;
-//	cout << date3.ToString() << endl;
+//	TStack<int> s1;
+//	s1.push(2);
+//	s1.push(-9);
+//	s1.push(0);
+//	s1.push(123);
+//	cout << s1.to_string();
+//
+//	s1.pop();
+//	REQUIRE(strcmp(s1.to_string(), "2  -9  0"));
 //
 //}
+
+
+TEST_CASE("PLUS")
+{
+	Date date4(6, 6, 6, 6, 6);
+	Date date1(1, 2, 3, 4, 5);
+	Date date2(5, 4, 3, 2, 1);
+	Date date3 = date1 + date2;
+	cout << date1.ToString() << endl;
+	cout << date2.ToString() << endl;
+	cout << date3.ToString() << endl;
+}
