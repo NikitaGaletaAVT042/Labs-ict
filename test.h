@@ -6,6 +6,7 @@
 #include  "TStack.h"
 #include <iostream>
 #include <cassert>
+#include <sstream>
 using namespace std;
 
 class Test

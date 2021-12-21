@@ -258,35 +258,6 @@
 //	cout << "Tests complete" << endl;
 // }
 //
-//void Test::Test12() {
-//
-//	Date date1(1, 1, 2018, 4, 14);
-//	Date date2(5, 6, 1759, 3, 43);
-//	Date date3(8, 10, 2002, 9, 60);
-//	Date date4(4, 2, 2003, 6, 5);
-//
-//	
-//
-//	/*Date date5;
-//	cin >> date5;
-//	cout << date5;
-//
-//
-//	date5.TextWrite();*/
-//
-//	Date date6 = Date::TextRead();
-//	cout << date6;
-//
-//	Date date7 = Date::TextRead(3);
-//	cout << date7;
-//
-//	Date date8 = Date::TextRead(7);
-//	cout << date8;
-//
-//	date2.BinWrite();
-//	Date date9 = Date::BinRead();
-//	cout << date9;
-//}
 //
 //TEST_CASE("Test 13")
 //{
@@ -303,13 +274,79 @@
 //}
 
 
-TEST_CASE("PLUS")
-{
-	Date date4(6, 6, 6, 6, 6);
-	Date date1(1, 2, 3, 4, 5);
-	Date date2(5, 4, 3, 2, 1);
-	Date date3 = date1 + date2;
-	cout << date1.ToString() << endl;
-	cout << date2.ToString() << endl;
-	cout << date3.ToString() << endl;
+//TEST_CASE("PLUS")
+//{
+//	Date date4(6, 6, 6, 6, 6);
+//	Date date1(1, 2, 3, 4, 5);
+//	Date date2(5, 4, 3, 2, 1);
+//	Date date3 = date1 + date2;
+//	cout << date1.ToString() << endl;
+//	cout << date2.ToString() << endl;
+//	cout << date3.ToString() << endl;
+//}
+//TEST_CASE("Test 13")
+//{	Date date1(1, 1, 2018, 4, 14);
+//	Date date2(5, 6, 1759, 3, 43);
+//	ofstream file1;
+//	ifstream file2;
+//	file1.open("filename.txt", ios::app);
+//	date1.TextWrite(file1);
+//	date2.TextWrite(file1);
+//	file1.close();
+//	file2.open("filename.txt", ios::in || ios::app);
+//	Date date6;
+//	Date date5;
+//	Date date7;
+//	date6=date5.TextRead(file2);
+//	date7=date5.TextRead(file2);
+//	cout << date6;
+//	cout << date7;
+//	REQUIRE(strcmp(date6.ToString(), "1 1 2018 4 14"));
+//	REQUIRE(strcmp(date7.ToString(), "5 6 1795 3 43"));
+//	file2.close();
+//	Date date1(1, 1, 2018, 4, 14);
+//	Date date2(5, 6, 1759, 3, 43);
+//	
+//	ofstream file1;
+//	ifstream file2;
+//	file1.open("filename.txt",ios::app);
+//	date1.TextWrite(file1);
+//	date2.TextWrite(file1);
+//	file1.close();
+//	file2.open("filename.txt", ios::app);
+//	Date date6;
+//	Date date7;
+//	date6=date6.TextRead(file2);
+//	date7=date7.TextRead(file2);
+//	cout << date6;
+//	cout << date7;
+//	/*int day, int month, int year, int hour, int minute*/
+//	REQUIRE(strcmp(date6.ToString(), "1 1 2018 4 14"));
+//	REQUIRE(strcmp(date7.ToString(), "5 6 1795 3 43"));
+//	file2.close();
+//	/*ofstream file1b;
+//	ifstream file2b;
+//	file1b.open("file.bin", ios::app || ios::binary);
+//	date1.BinWrite(file1b);
+//	date2.BinWrite(file1b);
+//	file1b.close();
+//	file2b.open("file.bin", ios::app || ios::binary);
+//	Date date8;
+//	Date date9;
+//	date8 = date8.BinRead(file2b);
+//	date9 = date9.BinRead(file2b);
+//	cout << date8;
+//	cout << date9;
+//	REQUIRE(strcmp(date8.ToString(), "1 1 2018 4 14"));
+//	REQUIRE(strcmp(date9.ToString(), "5 6 1795 3 43"));
+//	file2b.close();*/
+//}
+
+TEST_CASE("Test 13") {
+	stringstream s;
+	s << "1:1:2018 4:4";
+	Date b;
+	s >> b;
+	cout << b.ToString();
+	REQUIRE(0 == strcmp(b.ToString(), "1:1:2018 8:4"));
 }

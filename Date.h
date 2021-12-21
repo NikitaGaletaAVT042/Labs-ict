@@ -132,17 +132,17 @@ public:
 		return ToString();
 	}
 
-	friend ostream& operator <<(ostream& os, const Date& obj);
+	friend ostream& operator <<(ostream& os, Date& obj);
 	friend istream& operator >>(istream& is, Date& obj);
 
-	void TextWrite(const char* filename = filename_t);
-	static Date TextRead(int index = 1, const char* filename = filename_t);
+	void TextWrite(ofstream& file);
+	Date TextRead(ifstream& file);
 
-	void BinWrite(const char* filename = filename_b);
-	static Date BinRead(int index = 1, const char* filename = filename_b);
+	void BinWrite(ofstream& file);
+	Date BinRead(ifstream& file);
 
 private:
 	int day, month, year, hour, minute;
-//protected:
-	char* strin = new char[255];
+
+
 };

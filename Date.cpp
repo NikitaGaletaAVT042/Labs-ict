@@ -21,7 +21,7 @@ Date::Date() {
 	if (minute < 0) {
 		minute = minute * -1;
 	}
-	strin = new char[256];
+
 }
 Date::Date(int day, int month, int year, int hour, int minute) {
 	if ((day < 31) && (day > 0)) {
@@ -63,7 +63,6 @@ Date::Date(const Date& date) {//конструктор копирования
 
 Date::~Date()
 {
-	delete [] strin;
 }
 
 
@@ -212,76 +211,73 @@ int Date::getMinute()
 
 char* Date::ToString()
 {
-	sprintf_s(strin, 25, "%d:%d:%d %d:%d", year, month, day, hour, minute );
+	char* strin = new char[255];
+	sprintf_s(strin, 25, "%d:%d:%d %d:%d", day, month, year, hour, minute );
 	return strin;
 }
 
-void Date::TextWrite(const char* filename)
+void Date::TextWrite(ofstream& file)
 {
 
-	ofstream out(filename, ios::app);
-
-	if (!out) {
-		cerr << "File not open" << endl;
+	if (!file) {
+		cout << "File not open" << endl;
 		exit(1);
 	}
 
-	out << *this;
-	out.close();
- 
+	file << *this;
+
 }
 
-Date Date::TextRead(int index, const char* filename)
+Date Date::TextRead(ifstream& file)
 {
 
-	ifstream in(filename, ios::in);
-
-	if (!in) {
-		cerr << "File not open" << endl;
+	if (!file) {
+		cout << "File not open" << endl;
 		exit(1);
 	}
 
 	Date nDate;
 
-	for (int i = 1; i <= index; i++) {
-		in >> nDate;
-	}
+	file >> nDate;
 
-	in.close();
 	return nDate;
 }
 
-void Date::BinWrite(const char* filename)
+
+
+void Date::BinWrite(ofstream& file)
 {
 
-	ofstream out(filename, ios::app | ios::binary);
-
-	if (!out) {
-		cerr << "File not open" << endl;
+	if (!file) {
+		cout << "File not open" << endl;
 		exit(1);
 	}
 
-	out << *this;
-	out.close();
+	file.write((char*)&day, sizeof(int));
+	file.write((char*)&month, sizeof(int));
+	file.write((char*)&year, sizeof(int));
+	file.write((char*)&hour, sizeof(int));
+	file.write((char*)&minute, sizeof(int));
+
 
 }
 
-Date Date::BinRead(int index, const char* filename)
+Date Date::BinRead(ifstream& file)
 {
-	ifstream in(filename, ios::in | ios::binary);
 
-	if (!in) {
-		cerr << "File not open" << endl;
+	if (!file) {
+		cout << "File not open " << endl;
 		exit(1);
 	}
 
 	Date nDate;
 
-	for (int i = 1; i <= index; i++) {
-		in >> nDate;
-	}
+	file.read((char*)&nDate.day, sizeof(int));
+	file.read((char*)&nDate.month, sizeof(int));
+	file.read((char*)&nDate.year, sizeof(int));
+	file.read((char*)&nDate.hour, sizeof(int));
+	file.read((char*)&nDate.minute, sizeof(int));
 
-	in.close();
 	return nDate;
 }
 
@@ -307,13 +303,24 @@ Date operator - (const Date& obj1, const Date& obj2) {
 	return CheckingMinus(obj);
 }
 
-ostream& operator <<(ostream& os, const Date& obj) {
-	os << obj.year << " " << obj.month << " " << obj.day << " " << obj.hour << " " << obj.minute << "\n";
+ostream& operator <<(ostream& os, Date& obj) {
+	os << obj.year << ":" << obj.month << ":" << obj.day << " " << obj.hour << ":" << obj.minute << "\n";
 	return os;
 }
 
 istream& operator >>(istream& is, Date& obj)
 {
-	is >> obj.year >> obj.month >> obj.day >> obj.hour >> obj.minute;
+
+
+	is >> obj.day;
+	is.ignore(256,':');
+	is >> obj.month;
+	is.ignore(256,':');
+	is >> obj.year;
+	is.ignore(256,' ');
+	is >> obj.hour;
+	is.ignore(256,':');
+	is>> obj.minute;
+
 	return is;
 }
